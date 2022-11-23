@@ -25,6 +25,7 @@
                         <!-------------------- Step-1 --------------------->
                         <div class="multisteps_form_panel">
                             <div class="step_content text-center pt-3">
+                                <h4>Welcome to MYQuiz!</h4>
                                 <div class="count_clock">
                                     <img src="/quizo/version-10/assets/images/clock/clock.png" alt="image-not-found">
                                 </div>
