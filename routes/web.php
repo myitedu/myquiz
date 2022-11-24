@@ -13,3 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [\App\Http\Controllers\PublicController::class, 'index'])->name('home');
+Route::get('/contactus', [\App\Http\Controllers\PublicController::class, 'contactus'])->name('contactus');
