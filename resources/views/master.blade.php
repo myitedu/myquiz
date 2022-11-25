@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="/quizo/version-10/assets/css/animate.min.css">
     <!-- Main-StyleSheet include -->
     <link rel="stylesheet" href="/quizo/version-10/assets/css/style.css">
+    <link rel="stylesheet" href="/css/myquiz.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="/js/myquiz.js"></script>
 </head>
 <body>
 @yield('content')

@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [\App\Http\Controllers\PublicController::class, 'index'])->name('home');
 Route::get('/contactus', [\App\Http\Controllers\PublicController::class, 'contactus'])->name('contactus');
+Route::get('/', [\App\Http\Controllers\PublicController::class, 'categories'])->name('categories');
+Route::get('/questions/{category_id}', [\App\Http\Controllers\PublicController::class, 'questions'])->name('questions');
