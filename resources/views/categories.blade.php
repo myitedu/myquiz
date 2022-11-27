@@ -1,6 +1,21 @@
 @extends('master')
 @section('title', 'Welcome to MyQuiz Portal!')
 @section('content')
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div class="bubles">
+        @for($i=10; $i<100; $i++)
+
+
+            <span style="--i:{{$i}}">
+                <i class="material-icons snow">ac_unit</i>
+            </span>
+        @endfor
+
+    </div>
+
+
     <div class="wrapper overflow-hidden position-relative">
         <div class="container-fluid p-0">
             <div class="row">
@@ -27,6 +42,7 @@
                             </div>
                             <div class="form_content">
                                 @foreach($categories as $category)
+
                                 <div data-category_id="{{$category->id}}" class="categories">{{$category->title}}</div>
                                 @endforeach
 
@@ -44,5 +60,11 @@
             </div>
         </div>
     </div>
-    @include('scripts');
+
+
+
+    @include('tilt')
+
+
+    @include('scripts')
 @stop

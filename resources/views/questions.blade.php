@@ -1,6 +1,7 @@
 @extends('master')
 @section('title', 'Welcome to MyQuiz Portal!')
 @section('content')
+    <body>
     <div class="wrapper overflow-hidden position-relative">
         <div class="container-fluid p-0">
             <div class="row">
@@ -45,6 +46,9 @@
                                            {{$answer->title}}
                                             <input for="opt_{{$answer->id}}" type="radio" name="stp_{{$question->id}}_select_option" value="{{$answer->title}}">
                                         </label>
+
+
+
                                     </div>
                                     @endforeach
 
@@ -97,5 +101,15 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="../../public/js/tilt.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".categories"),{
+            max: 25,
+            speed: 400,
+            glare:true,
+            "max-glare": 1,
+        });
+    </script>
+    </body>
     @include('scripts');
 @stop
