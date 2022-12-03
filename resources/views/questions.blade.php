@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8 pt-5 form_wrapper overflow-hidden">
-                    <form class="multisteps_form" id="wizard" method="POST" action="/quizo/thankyou/index-1.html">
+                    <form class="multisteps_form" id="wizard" method="POST" action="/answers/save">
                         @foreach($questions as $question)
                         <!-------------------- Step-1 --------------------->
                         <div class="multisteps_form_panel">
@@ -44,7 +44,7 @@
                                     <div class="col-md-6 py-3">
                                         <label id="opt_{{$answer->id}}" class="step_{{$question->id}} bg-white overflow-hidden rounded-pill text-center">
                                            {{$answer->title}}
-                                            <input for="opt_{{$answer->id}}" type="radio" name="stp_{{$question->id}}_select_option" value="{{$answer->title}}">
+                                            <input for="opt_{{$answer->id}}" type="radio" name="questions[{{$question->id}}]" value="{{$answer->id}}">
                                         </label>
 
 
@@ -96,6 +96,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{csrf_field()}}
                     </form>
                 </div>
             </div>

@@ -42,8 +42,12 @@
                             </div>
                             <div class="form_content">
                                 @foreach($categories as $category)
+                                 @php
+                                    $has_question = count($category->questions)?1:0;
+                                 @endphp
 
-                                <div data-category_id="{{$category->id}}" class="categories">{{$category->title}}</div>
+
+                                <div data-has_questions="{{$has_question}}" data-category_id="{{$category->id}}" class="categories">{{$category->title}} ({{count($category->questions)}})</div>
                                 @endforeach
 
                             </div>
