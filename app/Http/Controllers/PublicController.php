@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class PublicController extends Controller
 {
+
+    public $USERID;
+
+    public function __construct(){
+        $this->USERID = env('USERID',88);
+    }
+
     public function categories(Request $request){
         $categories = Category::all();
         return view('categories',compact('categories'));
@@ -27,7 +34,7 @@ class PublicController extends Controller
     }
 
     public function user_answer_save(Request $request){
-        $user = Auth::user();
+        $user_id = $this->USERID;
         $parms = $request->all();
         $questions = $parms['questions'];
 
@@ -36,7 +43,7 @@ class PublicController extends Controller
             $inputs = [
                 'question_id' => $question_id,
                 'answer_id' => $answer_id,
-                'user_id' => $user->id??99
+                'user_id' => $user_id
             ];
             $new = UserAnswer::create($inputs);
         }
