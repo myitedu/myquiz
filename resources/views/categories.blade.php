@@ -42,8 +42,10 @@
                             </div>
                             <div class="form_content">
                                 @foreach($categories as $category)
-
-                                <div data-category_id="{{$category->id}}" class="categories">{{$category->title}}</div>
+                                    @php
+                                    $is_clickable = count($category->questions)??0;
+                                    @endphp
+                                <div data-is_clickable="{{$is_clickable}}" data-category_id="{{$category->id}}" class="categories">{{$category->title}}({{count($category->questions)}})</div>
                                 @endforeach
 
                             </div>

@@ -5,25 +5,10 @@
     <div class="wrapper overflow-hidden position-relative">
         <div class="container-fluid p-0">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="steps_area step_area_fixed">
-                        <div class="form_logo position-absolute ps-5 pt-5">
-                            <img class="d-none d-lg-block" src="/quizo/version-10/assets/images/logo/logo.png" alt="image_not_found">
-                        </div>
-                        <div class="image_holder">
-                            <img class="overflow-hidden d-none d-lg-block" src="/quizo/version-10/assets/images/background/bg_0.png" alt="image_not_found">
-                        </div>
-                        <div class="form_btn position-absolute">
-                            <button type="button" class="prev_btn border-0 text-uppercase overflow-hidden rounded-pill text-white" id="prevBtn" onclick="nextPrev(-1)"><span><i class="fas fa-arrow-left rounded-pill"></i></span> Last
-                                Question</button>
-                            <button type="button" class="next_btn border-0 text-uppercase overflow-hidden rounded-pill text-white" id="nextBtn"
-                                    onclick="nextPrev(1), move()">Next Question</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-8 pt-5 form_wrapper overflow-hidden">
-                    <form class="multisteps_form" id="wizard" method="POST" action="/quizo/thankyou/index-1.html">
+                      <form class="multisteps_form" id="wizard" method="POST">
                         @foreach($questions as $question)
+
                         <!-------------------- Step-1 --------------------->
                         <div class="multisteps_form_panel">
                             <div class="step_content text-center pt-3">
@@ -44,29 +29,33 @@
                                     <div class="col-md-6 py-3">
                                         <label id="opt_{{$answer->id}}" class="step_{{$question->id}} bg-white overflow-hidden rounded-pill text-center">
                                            {{$answer->title}}
-                                            <input for="opt_{{$answer->id}}" type="radio" name="stp_{{$question->id}}_select_option" value="{{$answer->title}}">
+                                            <input for="opt_{{$answer->id}}" type="radio" name="question_{{$question->id}}" value="{{$answer->id}}:{{$answer->correct}}">
                                         </label>
-
-
-
                                     </div>
                                     @endforeach
-
                                 </div>
                             </div>
-
                         </div>
                         @endforeach
-
-
-
-
-
-
-
-
-
-
+                        <div class="col-lg-4">
+                                <div class="steps_area step_area_fixed">
+                                    <div class="form_logo position-absolute ps-5 pt-5">
+                                        <img class="d-none d-lg-block" src="/quizo/version-10/assets/images/logo/logo.png" alt="image_not_found">
+                                    </div>
+                                    <div class="image_holder">
+                                        <img class="overflow-hidden d-none d-lg-block" src="/quizo/version-10/assets/images/background/bg_0.png" alt="image_not_found">
+                                    </div>
+                                    <div class="form_btn position-absolute">
+                                        <button type="button" class="prev_btn border-0 text-uppercase overflow-hidden rounded-pill text-white" id="prevBtn" onclick="nextPrev(-1)"><span><i class="fas fa-arrow-left rounded-pill"></i></span> Last
+                                            Question</button>
+                                        {{csrf_field()}}
+                                        <button type="button" class="next_btn border-0 text-uppercase overflow-hidden rounded-pill text-white" id="nextBtn"
+                                                onclick="nextPrev(1), move()">Next Question</button>
+                                        <input type="hidden" name="category_id" value="{{$questions[0]->category_id}}">
+                                    </div>
+                                </div>
+                            </div>
+                      </form>
 
                         <div class="row justify-content-center align-items-center pt-5">
                             <div class="col-md-8">
@@ -96,11 +85,11 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
+
     <script type="text/javascript" src="../../public/js/tilt.js"></script>
     <script>
         VanillaTilt.init(document.querySelectorAll(".categories"),{
@@ -108,7 +97,7 @@
             speed: 400,
             glare:true,
             "max-glare": 1,
-        });
+        })
     </script>
     </body>
     @include('scripts');
