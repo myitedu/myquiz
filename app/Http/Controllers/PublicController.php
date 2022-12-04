@@ -70,4 +70,7 @@ class PublicController extends Controller
         $results = UserAnswer::where('user_id', $user->id)->where('category_id', $category_id)->get();
         return view('thankyou', compact('results'));
     }
+    public function dashboard(Request $request){
+        return view('dashboard');
+    }
 }

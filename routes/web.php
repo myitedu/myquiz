@@ -18,6 +18,7 @@ Route::get('/', [\App\Http\Controllers\PublicController::class, 'categories'])->
 Route::middleware(['auth'])->group(function () {
     Route::match(['get','post'],'/questions/{category_id}', [\App\Http\Controllers\PublicController::class, 'questions'])->name('questions');
     Route::get('/thankyou/{category}', [App\Http\Controllers\PublicController::class, 'thankyou'])->name('thankyou');
+    Route::get('/dashboard', [App\Http\Controllers\PublicController::class, 'dashboard'])->name('dashboard');
 
 
 
