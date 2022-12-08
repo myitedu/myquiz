@@ -1,7 +1,7 @@
 @extends('master')
 @section('title', 'Welcome to MyQuiz Portal!')
 @section('content')
-    <body>
+
     <div class="wrapper overflow-hidden position-relative">
         <div class="container-fluid p-0">
             <div class="row">
@@ -46,12 +46,9 @@
                                            {{$answer->title}}
                                             <input for="opt_{{$answer->id}}" type="radio" name="questions[{{$question->id}}]" value="{{$answer->id}}">
                                         </label>
-
-
-
                                     </div>
                                     @endforeach
-
+                                        <input type="hidden" name="category_id" value="{{$category_id}}">
                                 </div>
                             </div>
 
@@ -111,6 +108,6 @@
             "max-glare": 1,
         });
     </script>
-    </body>
+
     @include('scripts');
 @stop

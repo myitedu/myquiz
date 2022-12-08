@@ -6,7 +6,7 @@
 // ==================================================
 $(function(){
   "use strict";
-  
+
   // ========== Form-select-option ========== //
   $(".step_1").on('click', function(){
     $(".step_1").removeClass("active");
@@ -24,7 +24,7 @@ $(function(){
     $(".step_4").removeClass("active");
     $(this).addClass("active");
   });
-  
+
   // ================== CountDown function ================
   $('.countdown_timer').each(function(){
     $('[data-countdown]').each(function() {
@@ -35,7 +35,7 @@ $(function(){
       });
     });
   });
-  
+
 });
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -47,9 +47,9 @@ function showTab(n) {
   x[n].style.display = "block";
   // ... and fix the Previous/Next buttons:
   if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
+    //document.getElementById("prevBtn").style.display = "none";
   } else {
-    document.getElementById("prevBtn").style.display = "inline";
+    //document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
@@ -116,7 +116,7 @@ function move() {
   var width = parseInt(elem.innerHTML);
   var aim = width + 25;
   var id = setInterval(frame, 25);
-  
+
   function frame() {
     if (width >= aim) {
       clearInterval(id);
