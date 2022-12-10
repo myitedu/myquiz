@@ -11,4 +11,9 @@ class Category extends Model
     public function questions(){
         return $this->hasMany(Question::class,'category_id');
     }
+
+    public function user_answers(){
+        return $this->hasMany(UserAnswer::class,'category_id');
+    }
+
 }

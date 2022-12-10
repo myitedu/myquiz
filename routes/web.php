@@ -18,11 +18,11 @@ Route::get('/', [\App\Http\Controllers\PublicController::class, 'categories'])->
 Route::middleware(['auth'])->group(function () {
     Route::match(['get','post'],'/questions/{category_id}', [\App\Http\Controllers\PublicController::class, 'questions'])->name('questions');
     Route::get('/thankyou/{category}', [App\Http\Controllers\PublicController::class, 'thankyou'])->name('thankyou');
-    Route::get('/dashboard', [App\Http\Controllers\PublicController::class, 'dashboard'])->name('dashboard');
 
 
-
-
+    //All Dashboard Links
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/categories', [App\Http\Controllers\DashboardController::class, 'categories'])->name('dashboard.categories');
 });
 
 Auth::routes();

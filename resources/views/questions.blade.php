@@ -1,7 +1,6 @@
 @extends('master')
 @section('title', 'Welcome to MyQuiz Portal!')
 @section('content')
-    <body>
     <div class="wrapper overflow-hidden position-relative">
         <div class="container-fluid p-0">
             <div class="row">
@@ -90,7 +89,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="../../public/js/tilt.js"></script>
+    <script type="text/javascript" src="/js/tilt.js"></script>
     <script>
         VanillaTilt.init(document.querySelectorAll(".categories"),{
             max: 25,
@@ -99,6 +98,5 @@
             "max-glare": 1,
         })
     </script>
-    </body>
     @include('scripts');
 @stop
