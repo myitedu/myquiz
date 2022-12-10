@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [\App\Http\Controllers\PublicController::class, 'categories'])->name('categories');
 Route::get('/contactus', [\App\Http\Controllers\PublicController::class, 'contactus'])->name('contactus');
+Route::get('/print/certificate/{user_id}', [\App\Http\Controllers\PublicController::class, 'print_certificate'])->name('print.certificate');
 
 
 Route::get('/dashboard', function () {
