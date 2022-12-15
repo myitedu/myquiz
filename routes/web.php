@@ -18,9 +18,7 @@ Route::get('/contactus', [\App\Http\Controllers\PublicController::class, 'contac
 Route::get('/print/certificate/{user_id}', [\App\Http\Controllers\PublicController::class, 'print_certificate'])->name('print.certificate');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [\App\Http\Controllers\PublicController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

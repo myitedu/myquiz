@@ -69,13 +69,18 @@ class PublicController extends Controller
 
     public function print_certificate(Request $request, $user_id)
     {
+        //return view('certificate');
 
-        $html="<img class='certificate' src=\"{{ URL::asset('img/blank_certificate.png') }}\">";
-        $html.="<style>.certificate{width:500px;}</style>";
+        //$html="<img class='certificate' src='".URL::asset('img/blank_certificate.png')."'>";
+        //$html.="<style>.certificate{width:500px;}</style>";
+
+        //$viewhtml = View::make('pages.newblade', [variables])->render();
+        $user = Auth::user();
+        $html = \Illuminate\Support\Facades\View::make('certificate',compact('user'))->render();
 
 
-
-        $dompdf = new Dompdf();
+        //$dompdf = new Dompdf(array('enable_remote' => true));
+        $dompdf = new Dompdf(['enable_remote' => true]);
         $dompdf->loadHtml($html);
         /*
         $dompdf->loadHtml('
@@ -92,5 +97,25 @@ class PublicController extends Controller
         $dompdf->stream("jontoshmatov.pdf",array("Attachment" => false));
 
 
+    }
+
+    public function dashboard(Request $request){
+        $user = Auth::user();
+        $obj = UserAnswer::where('user_id', $user->id)->select('category_id');
+        $obj2s = $obj->get();
+
+        $cat_ids = [];
+
+        foreach ($obj2s as $obj2){
+            $cat_ids[] = $obj2->category_id;
+        }
+
+
+
+        $obj = $obj->groupBy('category_id');
+        $cids = $obj->pluck('category_id');
+        $questions = Question::whereIn('category_id',$cids)->get();
+        $answers = $obj->get();
+        return view('dashboard',compact('user','answers','questions','cat_ids'));
     }
 }

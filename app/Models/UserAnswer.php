@@ -16,4 +16,8 @@ class UserAnswer extends Model
     public function answers(){
         return $this->hasMany(Answer::class,'question_id','question_id');
     }
+
+    public function category(){
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }
